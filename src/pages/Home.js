@@ -12,6 +12,7 @@ import R5 from '../resources/Recurso 53.png'
 import R6 from '../resources/Recurso 54.png'
 
 export default function Home() {
+  const [ActualDraws, setActualDraws] = useState(null);
   const [NextDraws, setNextDraws] = useState(null);
   const [PrevDraws, setPrevDraws] = useState([]);
   const [responseData, setResponseData] = useState({result:{numero:'',signo:''}});
@@ -20,6 +21,7 @@ export default function Home() {
 
   const getResult = async (fecha) => {
     const result = await fetchResuts(fecha);
+    setActualDraws(result.next.fecha_desde)
     setNextDraws(result.next.fecha_juega)
     setPrevDraws(result.prev_draws)
     setResponseData(result)
@@ -64,7 +66,7 @@ export default function Home() {
           <div className="container-xl">
           <div className="row g-0">
             <div className="d-flex col-md-2 col-4 col-6">
-              <p className = "text">Sorteo: {PrevDraws[0]}</p>
+              <p className = "text">Sorteo: {ActualDraws}</p>
             </div>
             <div className="d-flex col-md-5 col-6 justify-content-end text-end">
               <p className="text">Proximo Sorteo: {NextDraws}</p>
@@ -77,7 +79,7 @@ export default function Home() {
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   {PrevDraws.map((index, i) => (
-                      <li> <button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i])}}>{PrevDraws[i]}</button></li>
+                      <li><button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i])}}>{PrevDraws[i]}</button></li>
                     ))}
                   </ul>
                 </div>
