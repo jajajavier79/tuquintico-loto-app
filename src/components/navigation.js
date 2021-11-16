@@ -7,7 +7,7 @@ export default function Navigation() {
     <nav className="navbar navbar-expand-md navbar-light sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <img src={TuQuintico} alt="TuQuintico" />
+          <img className="logoQ" src={TuQuintico} alt="TuQuintico" />
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" arial-label="Toggle navigation">

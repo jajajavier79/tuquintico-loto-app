@@ -12,7 +12,6 @@ import R5 from '../resources/Recurso 53.png'
 import R6 from '../resources/Recurso 54.png'
 
 export default function Home() {
-  const [ActualDraws, setActualDraws] = useState(null);
   const [NextDraws, setNextDraws] = useState(null);
   const [PrevDraws, setPrevDraws] = useState([]);
   const [responseData, setResponseData] = useState({result:{numero:'',signo:''}});
@@ -21,7 +20,6 @@ export default function Home() {
 
   const getResult = async (fecha) => {
     const result = await fetchResuts(fecha);
-    setActualDraws(result.draw.fecha_juega)
     setNextDraws(result.next.fecha_juega)
     setPrevDraws(result.prev_draws)
     setResponseData(result)
@@ -66,21 +64,23 @@ export default function Home() {
           <div className="container-xl">
           <div className="row g-0">
             <div className="d-flex col-md-2 col-4 col-6">
-              <p className = "text">Sorteo: {ActualDraws}</p>
+              <p className = "text">Sorteo: {PrevDraws[0]}</p>
             </div>
             <div className="d-flex col-md-5 col-6 justify-content-end text-end">
               <p className="text">Proximo Sorteo: {NextDraws}</p>
             </div>
             <div className="d-flex col-md-5 col-12 justify-content-end">
-              <div className="dropdown">
-                <a className="btn btn-secondary dropdown-toggle" href="/" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Sorteos Anteriores
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                {PrevDraws.map((index, i) => (
-                    <li obj={index} key={i} className="dropdown-item">{PrevDraws[i]}</li>
-                  ))}
-                </ul>
+              <div className="btn-group">
+                <div className="dropdown">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                      Sorteos Anteriores
+                  </button>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  {PrevDraws.map((index, i) => (
+                      <li> <button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i])}}>{PrevDraws[i]}</button></li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Home() {
             </div>
         </div>
 
-        {/* add ticket/request ticket section will stay there */}
+        {/* add ticket/request ticket section will stay here */}
         </section>
 
         <div className="container-xl ligadito">

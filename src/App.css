@@ -1,196 +1,204 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body::-webkit-scrollbar {
-width: 7px;
+	width: 7px;
 }
 
 body::-webkit-scrollbar-track {
-background-color: hidden;
-border-radius: 10px;
+	background-color: hidden;
+	border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-background-color: rgba(85, 82, 82, 0.507);
-border-radius: 10px;
+	background-color: rgba(85, 82, 82, 0.507);
+	border-radius: 10px;
+}
+
+.logoQ{
+  animation: spin infinite 15s linear;
 }
 
 .navbar{
-  background-color: rgb(255, 0, 0);
-  color: white;
+    background-color: rgb(255, 0, 0);
+    color: white;
 }
 
 .navbar-nav{
-  text-align: center;
-  position: relative;
-  left: 50%;
-  transform: translatex(-50%);
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
 }
 
 .nav-item a:hover{
-  background-color: rgba(241, 7, 7, 0.671);
+    background-color: rgba(241, 7, 7, 0.671);
 }
 
 .newusertext{
-font-size:14px;
-padding: 20px 0;
+	font-size:14px;
+	padding: 20px 0;
 }
 
 .text{
-font-size: 14px;
+	font-size: 14px;
 }
 .icons { 
-display: flex;
-justify-content: flex-end;
-float: right;
-padding: 20px 0;
-width: 80%;
-flex-direction: row;
-flex-wrap: wrap;
+	display: flex;
+	justify-content: flex-end;
+	float: right;
+	padding: 20px 0;
+	width: 80%;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 .icons a{
-color: rgb(63, 63, 63);
+	color: rgb(63, 63, 63);
 }
 
 .icons i{
-letter-spacing: 25px;
-font-size: 22px;
+	letter-spacing: 25px;
+	font-size: 22px;
 }
 
 .icons a:hover { 
-color:rgb(255, 0, 0); 
-text-decoration: none; 
-cursor:pointer; 
+	color:rgb(255, 0, 0); 
+	text-decoration: none; 
+	cursor:pointer; 
 }
 
 .spacing{
-  margin: 30px 0 0 0;
+    margin: 30px 0 0 0;
 }
 
 .large-spacing{
-  margin: 60px 0 0 0;
-}
-
-#dropdownMenuLink{
-  font-size: 14px;
+    margin: 60px 0 0 0;
 }
 
 .dropdown-item{
-  font-size: 14px;
+    font-size: 14px;
+}
+
+.btn {
+	font-size: 14px;
 }
 
 .imagen{
-  padding: 25px 0 25px 0;
-  user-select: none;
-  max-width: 15%;
-  height:auto;
+    padding: 25px 0 25px 0;
+    user-select: none;
+    max-width: 30%;
+    height:auto;
 }
 
 .bg{
-  background-color: rgb(245, 245, 245);
-  border-radius: 5px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
 }
 
 .ligadito{
-  user-select:none;
+    user-select:none;
 }
 
 .text{
-font-size: 14px;
+	font-size: 14px;
 }
 
 .infotext { 
-font-size: 14px;
-display: flex;
-justify-content: center;
-text-align: center;
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }
 
 .infotext i{
-letter-spacing: 14px;
+	letter-spacing: 14px;
 }
 
 .infotext a{
-text-align: center;
-color: #000000;
+	text-align: center;
+	color: #000000;
 }
 
 .iconsfinal { 
-display: flex;
-justify-content: center;
-padding-bottom: 12px;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 12px;
 }
 
 .iconsfinal a{
-text-align: center;
-color: #000000;
+	text-align: center;
+	color: #000000;
 }
 
 .iconsfinal i{
-letter-spacing: 12px;
-font-size: 24px;
-padding-left: 16px;
+	letter-spacing: 12px;
+	font-size: 24px;
+	padding-left: 16px;
 }
 
 .iconsfinal a:hover { 
-color:rgb(255, 0, 0); 
-text-decoration: none; 
-cursor:pointer; 
+	color:rgb(255, 0, 0); 
+	text-decoration: none; 
+	cursor:pointer; 
 }
 
 .footerdiv{
-width: 100%;
-height: 100%;
-background-color: rgba(38, 0, 255, 0.3);
+	width: 100%;
+	height: 100%;
+	background-color: rgba(38, 0, 255, 0.3);
 }
 
 
 .footer-copy-redes {
-width: 100%;
-background: rgb(0, 14, 58);
-border-top: 3px solid #fff;
+	width: 100%;
+	background: rgb(0, 14, 58);
+	border-top: 3px solid #fff;
 }
 
 .main-copy-redes {
-width: 100%;
-padding: 15px 0;
-margin: auto;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
--ms-align-items: center;
-align-items: center;
+	width: 100%;
+	padding: 15px 0;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
 }
 
 .footer-copy p{
-text-align: center;
-display: flex;
-justify-content: center;
-font-size: 10px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	font-size: 10px;
 }
 
 .footer-copy{
-width: 100%;
-color: #fff;
+	width: 100%;
+	color: #fff;
 }
 
 .footer-images {
-text-align: center;
-display: flex;
+	text-align: center;
+	display: flex;
   flex-wrap:wrap;
-justify-content: space-around;
-flex-direction: row;
-padding-bottom: 12px;
+	justify-content: space-around;
+	flex-direction: row;
+	padding-bottom: 12px;
 }
 
 @keyframes spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(0deg);
   }
 }
