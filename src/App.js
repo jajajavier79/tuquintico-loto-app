@@ -10,8 +10,18 @@ import Register from './pages/register'
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Link
 } from 'react-router-dom';
+
+function NoMatch(){
+  return(
+    <div className="NotFound">
+      <h1>El lugar donde intentas acceder no existe</h1>
+      <Link to="/"><a>Regresar a la pagina de inicio</a></Link>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -25,10 +35,9 @@ function App() {
           <Route path='/FormPay' element={<FormPay/>}/>
           <Route path='/TicketConsulta' element={<TicketConsulta/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path="*" element={<NoMatch/>}/>
         </Routes>
       </Router>
-
-
     </div>
   );
 }

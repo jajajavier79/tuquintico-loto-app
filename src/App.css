@@ -2,11 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
 body::-webkit-scrollbar {
 	width: 7px;
 }
@@ -93,7 +88,7 @@ body::-webkit-scrollbar-thumb {
 .imagen{
     padding: 25px 0 25px 0;
     user-select: none;
-    max-width: 30%;
+    max-width: 16.660%;
     height:auto;
 }
 
@@ -102,12 +97,12 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
 }
 
-.ligadito{
-    user-select:none;
+.requestModule{
+	border-radius: 8px;
 }
 
-.text{
-	font-size: 14px;
+.ligadito{
+    user-select:none;
 }
 
 .infotext { 
@@ -201,4 +196,91 @@ body::-webkit-scrollbar-thumb {
   to {
     transform: rotate(0deg);
   }
+}
+.loadingposition{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  animation: effect 2s ease infinite;
+}
+
+@keyframes effect{
+  0%{
+    width: 40px;
+    height: 40px;
+  }
+  90%{
+    width: 70px;
+    height: 70px;
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.loadingspan{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #121212;
+}
+
+.loadingspan:nth-child(2){
+  right: 0;
+}
+
+.loadingspan:nth-child(3){
+  right: 0;
+  bottom: 0;
+}
+
+.loadingspan:nth-child(4){
+  left: 0;
+  bottom: 0;
+}
+
+.request{
+	background-color:#555555;
+	border-radius: 8px;
+}
+
+.submitbtn{
+	width: 210px
+}
+
+.mini-text{
+	font-size: 14px;
+	margin: 0;
+	text-align: justify;
+}
+
+.padd{
+	padding: 20px 0 0 0;
+}
+
+@media(max-width: 991px) {
+	.padd{
+		padding: 0 0 0 0;
+	}
+}
+
+.errortext{
+	color: red;
+	font-size: 12px;
+	text-align: end;
+}
+
+.text-consulta{
+	display: flex;
+  padding: 0 60px 0;
+  align-items: center;
+  justify-content: center;
 }

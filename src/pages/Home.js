@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react'
-import { fetchResuts } from '../services/api'
+import { fetchResults } from '../services/api'
+import ModuloConsulta from '../components/moduloConsulta'
 import date from '../services/date'
 import banner from '../resources/tq-banner-1-100.png'
 import bottom from '../resources/banner/border-bot.png'
@@ -12,7 +13,6 @@ import R5 from '../resources/Recurso 53.png'
 import R6 from '../resources/Recurso 54.png'
 
 export default function Home() {
-  const [ActualDraws, setActualDraws] = useState(null);
   const [NextDraws, setNextDraws] = useState(null);
   const [PrevDraws, setPrevDraws] = useState([]);
   const [responseData, setResponseData] = useState({result:{numero:'',signo:''}});
@@ -20,8 +20,7 @@ export default function Home() {
   const [existResult, setExistResult] = useState(false);
 
   const getResult = async (fecha) => {
-    const result = await fetchResuts(fecha);
-    setActualDraws(result.next.fecha_desde)
+    const result = await fetchResults(fecha);
     setNextDraws(result.next.fecha_juega)
     setPrevDraws(result.prev_draws)
     setResponseData(result)
@@ -32,7 +31,6 @@ export default function Home() {
   const getUrlImage = (numero,type) => {
     if (type === 'N') return `/img/balls/${numero}.png`
     return `/img/signs/${numero}.png`
-    
   }
 
   useEffect(()=>{
@@ -66,7 +64,7 @@ export default function Home() {
           <div className="container-xl">
           <div className="row g-0">
             <div className="d-flex col-md-2 col-4 col-6">
-              <p className = "text">Sorteo: {ActualDraws}</p>
+              <p className = "text">Sorteo: {date(6)}</p>
             </div>
             <div className="d-flex col-md-5 col-6 justify-content-end text-end">
               <p className="text">Proximo Sorteo: {NextDraws}</p>
@@ -91,15 +89,27 @@ export default function Home() {
 
         <section className="results-section">
         <div className="spacing w-100">
-          <div className="bg container-xl d-flex justify-content-evenly flex-wrap">
+          <div className="bg container-xl d-flex justify-content-evenly">
             {combination.map((numero, index) => (
               <img key={index} src={process.env.PUBLIC_URL + getUrlImage(numero, 'N')} className="imagen col-xs-2 justify-content-center" alt={numero} />
             ))}
               {<img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" />}
             </div>
         </div>
-
-        {/* add ticket/request ticket section will stay here */}
+        <div className="spacing w-100">
+          <div className="container-xl">
+            <ModuloConsulta/>
+          </div>
+        </div>
+        {/*<div className="spacing">
+          <div className="container-xl">
+            <div className="requestModule bg-secondary">
+                <div className="d-flex col-md-2 col-4 col-6"><p className="text-light">Ingresa el número de boleto y los últimos 5 dígitos del código de validación que aparece en tu ticket de <b>TuQuintico</b></p></div>
+                <div className="d-flex col-md-5 col-12 justify-content-end"><p className="text text-light">Número de boleto</p></div>
+                <div className="d-flex col-md-5 col-6 justify-content-end text-end"></div>
+            </div>
+          </div>
+            </div>*/}
         </section>
 
         <div className="container-xl ligadito">
@@ -146,7 +156,7 @@ export default function Home() {
             <div className="main-copy-redes">
               <div className="footer-copy">
 					      <p className="text">© 2017 SUPERJUEGOS.COM.VE: Todos los derechos reservados
-                <br/>Prohibida la venta y comercialización de estos productos a niños, niñas y adolescentes menores a 16 años de edad.</p>
+                <br/>Prohibida la venta y comercialización de estos productos a niños, niñas y adolescentes menores a 18 años de edad.</p>
               </div>
             </div>
             <div className="container-xl">
