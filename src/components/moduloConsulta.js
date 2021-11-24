@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import bgConsulta from '../resources/bg-consulta.png'
 
 export default function ModuloConsulta() {
   const{
@@ -10,6 +11,12 @@ export default function ModuloConsulta() {
   const onSubmit = (data) => {
     console.log(data);
   };
+
+  const petitionRequest = () => {
+    <div className="consulta">
+      <img src={bgConsulta} alt="consulta"/>
+    </div>
+  }
 
   return (
     <div className="request d-flex flex-wrap">

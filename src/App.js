@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './resources/head/Group-1.png';
 import Navigation from './components/navigation';
 import './App.css';
 import Home from './pages/Home';
@@ -17,8 +18,19 @@ import {
 function NoMatch(){
   return(
     <div className="NotFound">
-      <h1>El lugar donde intentas acceder no existe</h1>
-      <Link to="/"><a>Regresar a la pagina de inicio</a></Link>
+      <div className="container position-absolute top-50 start-50 translate-middle">
+        <div className="row">
+          <div className="col-12">
+            <h1>El lugar donde intentas acceder no existe</h1>
+          </div>
+            <div className="col-12 spacing">
+              <img src={Logo} className="logoQ"/>
+            </div>
+            <div className="col-12 spacing">
+              <Link to="/"><button className="btn btn-danger">Regresar a la pagina de inicio</button></Link>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
