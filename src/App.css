@@ -18,6 +18,7 @@ body::-webkit-scrollbar-thumb {
 
 .logoQ{
   animation: spin infinite 15s linear;
+	user-select: none;
 }
 
 .navbar{
@@ -253,7 +254,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .submitbtn{
-	width: 210px
+	width: 100%
 }
 
 .mini-text{
@@ -285,8 +286,22 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
 }
 
+.NotFound h1{
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
 .NotFound div{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+.ticketSect{
+	padding: 30px 380px 0px 380px;
+}
+
+/* .dp-hide-unseek{
+	background-image: url("images/imagen.png");
+} */
+

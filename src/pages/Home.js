@@ -21,10 +21,10 @@ export default function Home() {
 
   const getResult = async (fecha) => {
     const result = await fetchResults(fecha);
-    setNextDraws(result.next.fecha_juega)
-    setPrevDraws(result.prev_draws)
-    setResponseData(result)
-    setCombination(result.result.numero.split(''))
+    setNextDraws(result.next.fecha_juega);
+    setPrevDraws(result.prev_draws);
+    setResponseData(result);
+    setCombination(result.result.numero.split(''));
     setExistResult(true);
   }
 
@@ -97,19 +97,8 @@ export default function Home() {
             </div>
         </div>
         <div className="spacing w-100">
-          <div className="container-xl">
-            <ModuloConsulta/>
-          </div>
+          <ModuloConsulta/>
         </div>
-        {/*<div className="spacing">
-          <div className="container-xl">
-            <div className="requestModule bg-secondary">
-                <div className="d-flex col-md-2 col-4 col-6"><p className="text-light">Ingresa el número de boleto y los últimos 5 dígitos del código de validación que aparece en tu ticket de <b>TuQuintico</b></p></div>
-                <div className="d-flex col-md-5 col-12 justify-content-end"><p className="text text-light">Número de boleto</p></div>
-                <div className="d-flex col-md-5 col-6 justify-content-end text-end"></div>
-            </div>
-          </div>
-            </div>*/}
         </section>
 
         <div className="container-xl ligadito">
