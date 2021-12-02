@@ -10,7 +10,6 @@ export default function ModuloConsulta() {
   const [Message, setMessage] = useState('');
   const [Rewards, setRewards] = useState([]);
   const [existRewards, setExistRewards] = useState(false);
-  const [load, setLoad] = useState(true);
 
   const getData = async (ID, Serial) => {
     try{
@@ -27,10 +26,9 @@ export default function ModuloConsulta() {
     }
   } 
 
-  useEffect(() => {
-    setLoading(true);
+  useEffect(() =>{
     
-  })
+  },[onSubmit])
 
   const{
     register, 
