@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   useEffect(()=>{
-    if(!existResult) getResult(date(6)); // Last saturday
+    if(!existResult) getResult(date(5)); // Last saturday
   },[existResult])
 
     return (
@@ -64,7 +64,7 @@ export default function Home() {
           <div className="container-xl">
           <div className="row g-0">
             <div className="d-flex col-md-2 col-4 col-6">
-              <p className = "text">Sorteo: {date(6)}</p>
+              <p className = "text">Sorteo: {date(5)}</p>
             </div>
             <div className="d-flex col-md-5 col-6 justify-content-end text-end">
               <p className="text">Proximo Sorteo: {NextDraws}</p>
@@ -90,10 +90,17 @@ export default function Home() {
         <section className="results-section">
         <div className="spacing w-100">
           <div className="bg container-xl d-flex justify-content-evenly">
-            {combination.map((numero, index) => (
+            {existResult == true ? combination.map((numero, index) => (
               <img key={index} src={process.env.PUBLIC_URL + getUrlImage(numero, 'N')} className="imagen col-xs-2 justify-content-center" alt={numero} />
-            ))}
-              {<img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" />}
+            )) 
+            : 
+            <div class="text-center">
+              <div class="spinner-border m-5" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          }
+          {existResult == true ? <img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" /> : null}
             </div>
         </div>
         <div className="spacing w-100">

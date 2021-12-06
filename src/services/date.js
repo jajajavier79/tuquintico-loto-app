@@ -6,4 +6,4 @@ export default function date(x){
         .slice(0, 10)
         .replace('T',' ');
 }
-console.log("Last draw:", date(6))
+console.log("Last draw:", date(5))

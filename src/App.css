@@ -17,7 +17,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .logoQ{
-  animation: spin infinite 15s linear;
+  animation: spin infinite 14s linear;
 	user-select: none;
 }
 
@@ -205,49 +205,6 @@ body::-webkit-scrollbar-thumb {
   transform: translate(-50%, -50%);
 }
 
-.loading{
-  position: relative;
-  width: 40px;
-  height: 40px;
-  animation: effect 2s ease infinite;
-}
-
-@keyframes effect{
-  0%{
-    width: 40px;
-    height: 40px;
-  }
-  90%{
-    width: 70px;
-    height: 70px;
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}
-
-.loadingspan{
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #121212;
-}
-
-.loadingspan:nth-child(2){
-  right: 0;
-}
-
-.loadingspan:nth-child(3){
-  right: 0;
-  bottom: 0;
-}
-
-.loadingspan:nth-child(4){
-  left: 0;
-  bottom: 0;
-}
-
 .request{
 	background-color:#555555;
 	border-radius: 8px;
@@ -297,11 +254,10 @@ body::-webkit-scrollbar-thumb {
 	align-items: center;
 }
 
-.ticketSect{
-	padding: 30px 380px 0px 380px;
+.backimg{
+	background-image: url("resources/bg-consulta.png");
 }
 
-/* .dp-hide-unseek{
-	background-image: url("images/imagen.png");
-} */
-
+.card{
+	width: 22rem;
+}

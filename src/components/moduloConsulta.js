@@ -1,34 +1,27 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import { useForm } from "react-hook-form"
-import bgConsulta from '../resources/bg-consulta.png'
 import { FetchRewards } from '../services/consultAPI'
 
 export default function ModuloConsulta() {
   
-  const [Ticket, setTicket] = useState("");
-  const [data, setData] = useState('');
+  const [Ticket, setTicket] = useState([]);
   const [Message, setMessage] = useState('');
   const [Rewards, setRewards] = useState([]);
-  const [existRewards, setExistRewards] = useState(false);
+  const [showTicket, setShowTicket] = useState(false);
 
   const getData = async (ID, Serial) => {
     try{
       const res = await FetchRewards(ID, Serial)
       console.log('%c Ticket has been found Successfully. Status: 200 ', 'background: #28a745; color: #fff')
-        setData(res.data);
-        setMessage('Ticket Premiado');
-        setRewards(res.data.premios.detalle);
-        setTicket(res.data.ticket.ticket);
-        setExistRewards(true);
+        setMessage('¡FELICIDADES!');
+        setRewards(res.data.premios[0].detalle);
+        setTicket(res.data.ticket.ticket.split("\n"));
+        setShowTicket(true);
     }
     catch (err){
       console.error("404: Ticket not found")
     }
-  } 
-
-  useEffect(() =>{
-    
-  },[onSubmit])
+  }
 
   const{
     register, 
@@ -38,12 +31,26 @@ export default function ModuloConsulta() {
 
   const onSubmit = (data) => getData(data.id, data.Serial);
 
-  const text = `${Ticket}`
-  let ticketWrap = text.split("\n").map(i =>{
-    return <p>{i}</p>
-  });
-
-  console.log(Rewards)
+  const Results = () => (
+    <div className="backimg">
+      <div className="row">
+      <div class="card justify-content-center spacing">
+        <div class="card-body">
+          {
+          Ticket.map((index, i)=>(
+          <p obj={index} key={i} className="card-text">{Ticket[i]}</p>
+          ))}
+        </div>
+      </div>
+        <div className="spacing col-12 text-white">
+          <p className="bodyticket">{Message}</p>
+        </div>
+        <div className="col-12 text-white">
+          <p className="bodyticket">{Rewards}</p>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
   <div className="container-xl">
@@ -82,21 +89,24 @@ export default function ModuloConsulta() {
         <div className="text-white text-center col-lg-4 text-consulta"><p><b>Recuerda: <br/></b>Realizamos nuestros sorteos todos los sábados a las 7:45PM.</p></div>
       </div>
     </div>
-    <div className="dp-hide-unseek">
+    
+    {showTicket == true ? <Results/> : null}
+
+    {/* <div className="dp-hide-unseek backimg">
       <div>
         <span className="dp-hide-unseek q-ticket spacing">
         <div className=" col-12 justify-content-center ticketSect"> 
           {ticketWrap}
         </div>
         </span>
-        <div className="dp-hide-unseek col-12 justify-content-center text-align-center">
-          {existRewards}
+        <div className="dp-hide-unseek col-12 justify-content-center text-align-center spacing">
+          {Message}
         </div>
         <div className="dp-hide-unseek justify-content-center text-align-center">
           <p>{Rewards}</p>
         </div>
       </div>
-    </div>
+    </div> */}
   </div>
   )
 }
