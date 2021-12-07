@@ -255,9 +255,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 .backimg{
+	display: flex;
+	justify-content:center;
 	background-image: url("resources/bg-consulta.png");
 }
 
-.card{
-	width: 22rem;
+.centercard{
+	display:block;
+}
+
+.ticketprint{
+	text-align:justify;
+}
+
+.bodyticket{
+	font-weight: 700;
+	text-align: center;
+	font-size: 17px;
 }
