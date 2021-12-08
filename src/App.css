@@ -255,6 +255,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .backimg{
+	width: 97%;
+	height: 100%;
 	display: flex;
 	justify-content:center;
 	background-image: url("resources/bg-consulta.png");
@@ -262,14 +264,19 @@ body::-webkit-scrollbar-thumb {
 
 .centercard{
 	display:block;
+	word-wrap: break-word;
 }
 
 .ticketprint{
 	text-align:justify;
+	font-family: "Courier New";
+	font-weight: 700;
+	font-size: 14px;
 }
 
 .bodyticket{
 	font-weight: 700;
 	text-align: center;
 	font-size: 17px;
+	
 }

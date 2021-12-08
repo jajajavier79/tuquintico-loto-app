@@ -23,7 +23,7 @@ export default function ModuloConsulta() {
       console.error("404: Ticket not found")
     }
   }
-  console.log(Ticket)
+
   const{
     register, 
     handleSubmit,
@@ -71,8 +71,8 @@ export default function ModuloConsulta() {
                 <input {...register("Serial", { required: true, maxLength: 5, minLength: 5, pattern: /^\w+$/g })} className="form-control" type="text" placeholder="Serial"/></div>
 
                 {errors.Serial?.type === 'pattern' && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Solo ingrese números y letras</p>}
-                {errors.Serial?.type === 'maxLength'  && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Solo 5 números</p>}
-                {errors.Serial?.type === 'minLength'  && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Solo 5 números</p>} 
+                {errors.Serial?.type === 'maxLength' && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Solo 5 números</p>}
+                {errors.Serial?.type === 'minLength' && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Solo 5 números</p>} 
                 {errors.Serial?.type === 'required' && <p className="errortext"><i className="fas fa-exclamation-circle"></i> Este campo es requerido</p>}
                 
                 <div className="spacing">

@@ -72,9 +72,15 @@ export default function Home() {
             <div className="d-flex col-md-5 col-12 justify-content-end">
               <div className="btn-group">
                 <div className="dropdown">
-                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                      Sorteos Anteriores
+                  {existResult == true ?
+                  <button type="button" class="btn btn-secondary dropdown-toggle enable" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    Sorteos Anteriores
                   </button>
+                  :
+                  <button type="button" class="btn btn-secondary dropdown-toggle disabled" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    Sorteos Anteriores 
+                  </button>
+                  }
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   {PrevDraws.map((index, i) => (
                       <li><button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i])}}>{PrevDraws[i]}</button></li>
@@ -90,21 +96,36 @@ export default function Home() {
         <section className="results-section">
         <div className="spacing w-100">
           <div className="bg container-xl d-flex justify-content-evenly">
+            
             {existResult == true ? combination.map((numero, index) => (
               <img key={index} src={process.env.PUBLIC_URL + getUrlImage(numero, 'N')} className="imagen col-xs-2 justify-content-center" alt={numero} />
-            )) 
-            : 
+            )) :
             <div class="text-center">
               <div class="spinner-border m-5" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
-            </div>
-          }
+            </div>}
+          
           {existResult == true ? <img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" /> : null}
-            </div>
+
+          </div>
         </div>
+
         <div className="spacing w-100">
+        {
+        existResult == true ? 
           <ModuloConsulta/>
+        :
+          <div className="container-xl">
+            <div className="request">
+              <div class="text-center justify-content-center">
+                <div class="spinner-border text-light m-5" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
         </div>
         </section>
 
