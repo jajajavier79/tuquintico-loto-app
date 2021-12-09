@@ -1,12 +1,12 @@
 import { React, useState } from 'react'
 import { useForm } from "react-hook-form"
-import { FetchRewards } from '../services/consultAPI'
+import { FetchRewards } from '../services/consultAPI';
 import Parser from 'html-react-parser'
 
 export default function ModuloConsulta() {
   
   const [Ticket, setTicket] = useState('');
-  const [Message, setMessage] = useState('');
+  const [Message, setMessage] = useState(null);
   const [Rewards, setRewards] = useState([]);
   const [showTicket, setShowTicket] = useState(false);
 
@@ -14,13 +14,14 @@ export default function ModuloConsulta() {
     try{
       const res = await FetchRewards(ID, Serial)
       console.log('%c Ticket has been found Successfully. Status: 200 ', 'background: #28a745; color: #fff')
-        setMessage('¡FELICIDADES!');
+        setMessage(res.message);
         setRewards(res.data.premios[0].detalle);
         setTicket(res.data.ticket.ticket.replace(/\n|\r|\\n/g, '<br/>'));
         setShowTicket(true);
     }
     catch (err){
       console.error("404: Ticket not found")
+      setShowTicket(false);
     }
   }
 
@@ -32,6 +33,14 @@ export default function ModuloConsulta() {
 
   const onSubmit = (data) => getData(data.id, data.Serial);
 
+  const ResultsFailed = () => (
+  <div className="spacing">
+    <div className="alert alert-danger" role="alert">
+      <strong>Ha ocurrido un error: </strong> {Message}.
+    </div>
+  </div>
+  )
+
   const Results = () => (
     <div className="container-xl backimg">
       <div className="row centercard">
@@ -41,7 +50,7 @@ export default function ModuloConsulta() {
         </div>
       </div>
         <div className="spacing col-12 text-white">
-          <p className="bodyticket">{Message}</p>
+          <p className="bodyticket">¡FELICIDADES!</p>
         </div>
         <div className="col-12 text-white">
           <p className="bodyticket">Has acertado {Rewards}</p>
@@ -87,7 +96,9 @@ export default function ModuloConsulta() {
           <div className="text-white text-center col-lg-4 text-consulta"><p><b>Recuerda: <br/></b>Realizamos nuestros sorteos todos los sábados a las 7:45PM.</p></div>
         </div>
       </div>
-      {showTicket == true ? <Results/> : null}
+      {Message === null ? null :
+        showTicket === true ? <Results/> : <ResultsFailed/>
+      }
     </div>
   )
 }

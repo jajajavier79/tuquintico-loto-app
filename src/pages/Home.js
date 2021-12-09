@@ -15,12 +15,16 @@ import R6 from '../resources/Recurso 54.png'
 export default function Home() {
   const [NextDraws, setNextDraws] = useState(null);
   const [PrevDraws, setPrevDraws] = useState([]);
+  const [ActualDraw,  setActualDraw] = useState('')
+  const [lastDraw,  setLastDraw] = useState('')
   const [responseData, setResponseData] = useState({result:{numero:'',signo:''}});
   const [combination, setCombination] = useState([]);
   const [existResult, setExistResult] = useState(false);
 
   const getResult = async (fecha) => {
     const result = await fetchResults(fecha);
+    setActualDraw(result.next.fecha_desde);
+    setLastDraw(result.draw.fecha_juega)
     setNextDraws(result.next.fecha_juega);
     setPrevDraws(result.prev_draws);
     setResponseData(result);
@@ -31,6 +35,12 @@ export default function Home() {
   const getUrlImage = (numero,type) => {
     if (type === 'N') return `/img/balls/${numero}.png`
     return `/img/signs/${numero}.png`
+  }
+
+  function returnDateDrop(param){
+    return(
+      param
+    )
   }
 
   useEffect(()=>{
@@ -64,30 +74,31 @@ export default function Home() {
           <div className="container-xl">
           <div className="row g-0">
             <div className="d-flex col-md-2 col-4 col-6">
-              <p className = "text">Sorteo: {date(5)}</p>
+              <p className = "text">Sorteo: {ActualDraw}</p>
             </div>
             <div className="d-flex col-md-5 col-6 justify-content-end text-end">
               <p className="text">Proximo Sorteo: {NextDraws}</p>
             </div>
             <div className="d-flex col-md-5 col-12 justify-content-end">
               <div className="btn-group">
-                <div className="dropdown">
-                  {existResult == true ?
-                  <button type="button" class="btn btn-secondary dropdown-toggle enable" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    Sorteos Anteriores
+                <div className="dropdown"> 
+                {existResult === true ?
+                  <button type="button" value="Sorteos Anteriores" class="btn btn-secondary dropdown-toggle enable" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    Sorteo: {lastDraw}
                   </button>
                   :
-                  <button type="button" class="btn btn-secondary dropdown-toggle disabled" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                    Sorteos Anteriores 
+                  <button type="button" value="Sorteos Anteriores" class="btn btn-secondary dropdown-toggle disabled" id="databutton" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    Sorteos Anteriores
                   </button>
-                  }
+                }
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   {PrevDraws.map((index, i) => (
-                      <li><button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i])}}>{PrevDraws[i]}</button></li>
+                      <li><button obj={index} key={i} className="dropdown-item" type="button" onClick={()=>{getResult(PrevDraws[i]); returnDateDrop(PrevDraws[i]) }}>{PrevDraws[i]}</button></li>
                     ))}
                   </ul>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
@@ -97,7 +108,7 @@ export default function Home() {
         <div className="spacing w-100">
           <div className="bg container-xl d-flex justify-content-evenly">
             
-            {existResult == true ? combination.map((numero, index) => (
+            {existResult === true ? combination.map((numero, index) => (
               <img key={index} src={process.env.PUBLIC_URL + getUrlImage(numero, 'N')} className="imagen col-xs-2 justify-content-center" alt={numero} />
             )) :
             <div class="text-center">
@@ -106,14 +117,14 @@ export default function Home() {
               </div>
             </div>}
           
-          {existResult == true ? <img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" /> : null}
+          {existResult === true ? <img src={process.env.PUBLIC_URL + getUrlImage(responseData.result.signo, 'S')} className="imagen col-xs-2 justify-content-center" alt="Signo" /> : null}
 
           </div>
         </div>
 
         <div className="spacing w-100">
         {
-        existResult == true ? 
+        existResult === true ? 
           <ModuloConsulta/>
         :
           <div className="container-xl">
@@ -130,7 +141,7 @@ export default function Home() {
         </section>
 
         <div className="container-xl ligadito">
-          <a><img className="w-100 large-spacing" src={ligadito} alt="Ligadito"/></a>
+          <a href="/"><img className="w-100 large-spacing" src={ligadito} alt="Ligadito"/></a>
           <hr className="large-spacing"/>
         </div>
 
@@ -179,22 +190,22 @@ export default function Home() {
             <div className="container-xl">
               <div className="footer-images">
                 <div className="col-md-2 col-4">
-                  <img src={R1}/>
+                  <img alt="footer" src={R1}/>
                 </div>
                 <div className="col-md-2 col-4">
-                  <a><img src={R4}/></a>
+                  <img alt="footer" src={R4}/>
                 </div>
                 <div className="col-md-2 col-4">
-                  <a><img src={R3}/></a>
+                  <img alt="footer" src={R3}/>
                 </div>
                 <div className="col-md-2 col-4">
-                  <a><img src={R2}/></a>
+                  <img alt="footer" src={R2}/>
                 </div>
                 <div className="col-md-2 col-4">
-                  <a><img src={R5}/></a>
+                  <img alt="footer" src={R5}/>
                 </div>
                 <div className="col-md-2 col-4">
-                  <a><img src={R6}/></a>
+                  <img alt="footer" src={R6}/>
                 </div>
               </div>
             </div>

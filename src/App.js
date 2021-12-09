@@ -24,7 +24,7 @@ function NoMatch(){
             <h1>El lugar donde intentas acceder no existe</h1>
           </div>
             <div className="col-12 spacing">
-              <img src={Logo} className="logoQ"/>
+              <img src={Logo} className="logoQ" alt="LOGO TQ"/>
             </div>
             <div className="col-12 spacing">
               <Link to="/"><button className="btn btn-danger">Regresar a la pagina de inicio</button></Link>
