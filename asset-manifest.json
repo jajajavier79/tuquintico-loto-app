@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tuquintico-loto-app/static/css/main.5b0d28e7.chunk.css",
+    "main.js": "/tuquintico-loto-app/static/js/main.2598e69d.chunk.js",
+    "main.js.map": "/tuquintico-loto-app/static/js/main.2598e69d.chunk.js.map",
+    "runtime-main.js": "/tuquintico-loto-app/static/js/runtime-main.3b1c3f75.js",
+    "runtime-main.js.map": "/tuquintico-loto-app/static/js/runtime-main.3b1c3f75.js.map",
+    "static/js/2.3100604f.chunk.js": "/tuquintico-loto-app/static/js/2.3100604f.chunk.js",
+    "static/js/2.3100604f.chunk.js.map": "/tuquintico-loto-app/static/js/2.3100604f.chunk.js.map",
+    "static/js/3.70cba7db.chunk.js": "/tuquintico-loto-app/static/js/3.70cba7db.chunk.js",
+    "static/js/3.70cba7db.chunk.js.map": "/tuquintico-loto-app/static/js/3.70cba7db.chunk.js.map",
+    "index.html": "/tuquintico-loto-app/index.html",
+    "static/css/main.5b0d28e7.chunk.css.map": "/tuquintico-loto-app/static/css/main.5b0d28e7.chunk.css.map",
+    "static/js/2.3100604f.chunk.js.LICENSE.txt": "/tuquintico-loto-app/static/js/2.3100604f.chunk.js.LICENSE.txt",
+    "static/media/4-100.fa85dbe1.png": "/tuquintico-loto-app/static/media/4-100.fa85dbe1.png",
+    "static/media/App.css": "/tuquintico-loto-app/static/media/bg-consulta.d5aac880.png",
+    "static/media/tq-banner-1-100.f4d477cf.png": "/tuquintico-loto-app/static/media/tq-banner-1-100.f4d477cf.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3b1c3f75.js",
+    "static/js/2.3100604f.chunk.js",
+    "static/css/main.5b0d28e7.chunk.css",
+    "static/js/main.2598e69d.chunk.js"
+  ]
+}
